@@ -36,6 +36,16 @@ Requires PHP: 7.2
 
 require_once 'bootstrap.php';
 
+add_action('plugins_loaded', function() {
+    if (!class_exists(\CouponsPlus\App\Coupon\Context::class)) {
+        add_action( 'admin_notices', function () {
+            (string) $message = __('Coupon URLs needs Coupons+ to work.', 'coupon-urls-international');
+         
+            print '<div class="notice notice-error"><p>'.esc_html($message).'</p></div>';
+        });
+        return;
+    }
+});
 (object) $environmentFactory = new EnvironmentFactory;
 (object) $environment = $environmentFactory->create(Env::settings()->environment);
 
