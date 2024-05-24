@@ -1,0 +1,33 @@
+{
+	"folders":
+	[
+		{
+			"path": "/Applications/MAMP/htdocs/automated-emails/wp-content/plugins/automated-emails",
+		},
+/*{
+			/*"folder_exclude_patterns":
+			[
+				".*"
+			],* /
+			/*"follow_symlinks": true,* /
+			"path": "/private/var/folders/20/7ymxt5796qbb9vtdl0qbzrt00000gn/T/wordpress-tests-lib",
+		},*/
+	],
+    "settings": {
+        "xdebug": {
+          "url": "http://localhost/automated-emails",
+          "path_mapping": {
+            },
+        },
+
+      },
+	"debugger_configurations":
+	[
+        {
+            "name": "Listen for Xdebug",
+            "type": "php",
+            "request": "launch",
+            "port": 9003,
+        },
+	],
+}

@@ -1,0 +1,16 @@
+#!/usr/bin/env php
+<?php
+
+use CouponURLs\Original\Commands\CommandsRegistrator;
+use Symfony\Component\Console\Application;
+
+require_once 'commands-bootstrap.php';
+require_once 'bootstrap.php';
+
+$application = new Application();
+
+$commandsRegistartor = new CommandsRegistrator($application);
+
+$commandsRegistartor->register();
+
+$application->run();

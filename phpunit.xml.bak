@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<phpunit
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/6.0/phpunit.xsd" 
+	bootstrap="tests/bootstrap.php"
+	backupGlobals="false"
+	colors="true"
+    beStrictAboutTestsThatDoNotTestAnything="false"
+    beStrictAboutOutputDuringTests="false"
+	convertErrorsToExceptions="true"
+	convertNoticesToExceptions="true"
+	convertWarningsToExceptions="true"
+    processIsolation="false"
+    stopOnError="false"
+	>
+	<testsuites>
+		<testsuite name="unit">
+			<directory suffix="Test.php">./tests/unit</directory>
+            <exclude>./vendor</exclude>
+		</testsuite>
+    </testsuites>
+	<php>
+        <var name="DB_DSN" value="mysql:dbname=highwaypro_test;host=127.0.0.1" />
+        <var name="DB_USER" value="root" />
+        <var name="DB_PASSWD" value="" />
+        <var name="DB_DBNAME" value="highwaypro_test" />
+    </php>
+</phpunit>

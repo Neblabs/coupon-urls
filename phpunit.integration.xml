@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.0/phpunit.xsd" bootstrap="tests/bootstrap.php" backupGlobals="false" colors="true" beStrictAboutTestsThatDoNotTestAnything="false" beStrictAboutOutputDuringTests="true" processIsolation="false" stopOnError="false" cacheDirectory=".phpunit.cache">
+  <testsuites>
+    <testsuite name="integration">
+      <directory suffix="Test.php">./tests/integration</directory>
+      <exclude>./vendor</exclude>
+    </testsuite>
+  </testsuites>
+</phpunit>

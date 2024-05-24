@@ -1,0 +1,44 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"X-Generator: babel-plugin-makepot\n"
+
+#: src/ActionsBox.js:23
+msgid "Add action"
+msgstr ""
+
+#: src/CardHeader.js:30
+msgid "remove"
+msgstr ""
+
+#: src/DashboardManager.js:122
+msgid "You need to select a path - Coupon URLs"
+msgstr ""
+
+#: src/DashboardManager.js:129
+msgid "You need to add one or more actions - Coupon URLs"
+msgstr ""
+
+#: src/Disabled.js:12
+msgid "URL disabled for this coupon"
+msgstr ""
+
+#: src/Disabled.js:18
+msgid "Enable"
+msgstr ""
+
+#: src/Enabled.js:15
+msgid "Enabled"
+msgstr ""
+
+#: src/Enabled.js:16
+msgid "Disable?"
+msgstr ""
+
+#: src/URI.js:40
+msgid "copy"
+msgstr ""
+
+#: src/URI.js:41
+msgid "Copied!"
+msgstr ""
