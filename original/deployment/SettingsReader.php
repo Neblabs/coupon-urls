@@ -1,10 +1,10 @@
 <?php
 
-namespace CouponURLs\Original\Deployment;
+namespace CouponURLS\Original\Deployment;
 
-use CouponURLs\Original\Collections\Collection;
-use CouponURLs\Original\Collections\Mapper\Mappable;
-use CouponURLs\Original\Collections\Mapper\Types;
+use CouponURLS\Original\Collections\Collection;
+use CouponURLS\Original\Collections\Mapper\Mappable;
+use CouponURLS\Original\Collections\Mapper\Types;
 
 Class SettingsReader extends Mappable
 {
@@ -18,10 +18,15 @@ Class SettingsReader extends Mappable
             'excludePrivateDirectories' => Types::BOOLEAN()->withDefault(true),
             'filesToExclude' => Types::COLLECTION,
             'directoriesToExclude' => Types::COLLECTION,
+            'processableFiles' => Types::ANY, // (StringManager $targetFle) => Validator[]
             'scripts' => [
+                //new:
+                'singleFile' => Types::COLLECTION, //Collection<Transformable>
+                //old:
                 'beforeClone' => Types::COLLECTION,
                 'afterClone' => Types::COLLECTION,
                 'afterCloningSingleFile' => Types::COLLECTION,
+                'afterCloningSingleProcessableFile' => Types::COLLECTION,
                 'afterCompression' => Types::COLLECTION
             ]
         ];   

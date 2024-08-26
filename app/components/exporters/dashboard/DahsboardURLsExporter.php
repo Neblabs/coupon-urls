@@ -20,7 +20,8 @@ class DahsboardURLsExporter implements DashboardExportable
 
     public function export(): array
     {
-        (object) $homepageUrlParts = _(parse_url(get_home_url()));
+        (object) $homepageUrlParts = _(wp_parse_url(get_home_url()));
+        
         return a(
             homepage: get_home_url(),
             homepageNoProtocol: i("{$homepageUrlParts->get('host')}/{$homepageUrlParts->get('path')}")->replace('//', '/')->trim()->trimRight('/')

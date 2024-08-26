@@ -1,10 +1,10 @@
 <?php
 
-namespace CouponURLs\Original\Deployment\Scripts;
+namespace CouponURLS\Original\Deployment\Scripts;
 
-use CouponURLs\Original\Characters\StringManager;
-use CouponURLs\Original\Collections\Collection;
-use CouponURLs\Original\Deployment\Script;
+use CouponURLS\Original\Characters\StringManager;
+use CouponURLS\Original\Collections\Collection;
+use CouponURLS\Original\Deployment\Script;
 use Error;
 use PhpParser\Node;
 use PhpParser\NodeTraverser;
@@ -19,8 +19,8 @@ use PhpParser\Node\Name;
 use PhpParser\ParserFactory;
 use PhpParser\PrettyPrinter\Standard;
 
-use function CouponURLs\Original\Utilities\Collection\{_, a};
-use function CouponURLs\Original\Utilities\Text\i;
+use function CouponURLS\Original\Utilities\Collection\{_, a};
+use function CouponURLS\Original\Utilities\Text\i;
 
 /**
  * IMPORTANT!
@@ -52,7 +52,7 @@ Class TransformGlobalFunctionWrapperIntoDirectFunctionCallCompilerScript extends
     {
         if (
             !i($this->data->target)->endsWith('.php') ||
-            i($this->data->target)->matchesRegEx('/automated-emails[\w0-9]*\/vendor/') ||
+            i($this->data->target)->matchesRegEx('/coupon-urls[A-Za-z0-9_-]*\/vendor/') ||
             _(static::$filesToExclude)->have(
                 fn(string $fileEndingIn) => i($this->data->target)->endsWith($fileEndingIn)
             )
@@ -68,7 +68,6 @@ Class TransformGlobalFunctionWrapperIntoDirectFunctionCallCompilerScript extends
                 return new Class {
                     public function do() : void
                     {
-                        add_action(hook: 'init');
                         return \$this->globalFunctionWrapper->do_action(hook: 'init');
                     }
                 };

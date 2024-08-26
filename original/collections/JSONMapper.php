@@ -59,7 +59,7 @@ Class JSONMapper
         if ((!$this->hasMap()) && $this->isNonJson($value)) {
             return $value;
         } elseif ($this->isObjectOrAssociativeArray($value)) {
-            (object) $jsonObject = $this->getObjectFromJson(Env::getEncoderFunction()($value));
+            (object) $jsonObject = (object) $value;//$this->getObjectFromJson(Env::getEncoderFunction()($value));
         } else {
             (object) $jsonObject = $this->getObjectFromJson($value);
         }

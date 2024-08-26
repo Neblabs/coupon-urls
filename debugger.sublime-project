@@ -2,7 +2,7 @@
 	"folders":
 	[
 		{
-			"path": "/Applications/MAMP/htdocs/automated-emails/wp-content/plugins/automated-emails",
+			"path": "/Applications/MAMP/htdocs/coupon-urls/wp-content/plugins/coupon-urls",
 		},
 /*{
 			/*"folder_exclude_patterns":
@@ -15,7 +15,7 @@
 	],
     "settings": {
         "xdebug": {
-          "url": "http://localhost/automated-emails",
+          "url": "http://localhost/coupon-urls",
           "path_mapping": {
             },
         },

@@ -1,2 +1,5 @@
 -updated copy API to use the standard Clipboard API.
 -added button to view the link on a new tab 
+-improved usabilty (added save-before-test waring, automaticaly update the path every few ms, )
+-added default preset (simple add & redirect)
+-fixed the scroll height

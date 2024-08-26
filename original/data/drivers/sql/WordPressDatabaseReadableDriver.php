@@ -3,46 +3,48 @@
 namespace CouponURLs\Original\Data\Drivers\SQL;
 
 use CouponURLs\Original\Collections\Collection;
-use CouponURLs\Original\Data\Drivers\Abilities\ReadableDriver;
 use CouponURLs\Original\Data\Drivers\Abilities\SQLReadableDriver;
 use CouponURLs\Original\Data\Query\Parameters;
 use CouponURLs\Original\Data\Query\SQLParameters;
-use CouponURLs\Original\Data\Query\WordPressSQLParameters;
-use CouponURLs\Original\Data\Schema\Structure;
+use CouponURLs\Original\System\ObjectWrapper;
+
 use function CouponURLs\Original\Utilities\Collection\{a, _};
 use wpdb;
 
 class WordPressDatabaseReadableDriver implements SQLReadableDriver
 {
     public function __construct(
-        protected wpdb $wpdb
+        /**
+         * This one is a wrapper for unit testing (mocking)
+         */
+        protected ObjectWrapper $wordpressDatabaseWrapper
     ) {}
 
     /** @param SQLParameters $parameters */
     public function findMany(Parameters $parameters): Collection
     {
-        (object) $wpdb = $this->wpdb;
-
-        return _($wpdb->get_results(
-            query: ($wpdb->prepare(
-                            ($this->getQueryStringReplacedWithPrintfPlaceholders($parameters)),
-                            ($parameters->queryValues()->asArray())
-                        )), 
-            output: ARRAY_A
+        return _($this->wordpressDatabaseWrapper->call(
+            'get_results', 
+            $this->wordpressDatabaseWrapper->call(
+                'prepare', 
+                $this->getQueryStringReplacedWithPrintfPlaceholders($parameters),
+                $parameters->queryValues()->asArray()
+            ),
+            ARRAY_A
         ));            
     } 
 
     /** @param SQLParameters $parameters */
     public function findOne(Parameters $parameters): array|null
     {
-        (object) $wpdb = $this->wpdb;
-
-        return $wpdb->get_row(
-            query: $wpdb->prepare(
+        return $this->wordpressDatabaseWrapper->call(
+            'get_row', 
+            $this->wordpressDatabaseWrapper->call(
+                'prepare', 
                 $this->getQueryStringReplacedWithPrintfPlaceholders($parameters),
                 $parameters->queryValues()->asArray()
             ), 
-            output: ARRAY_A
+            ARRAY_A
         );  
     } 
 
@@ -61,7 +63,7 @@ class WordPressDatabaseReadableDriver implements SQLReadableDriver
     /** @param SQLParameters $parameters */
     protected function getQueryStringReplacedWithPrintfPlaceholders(Parameters $parameters) : string
     {
-        (object) $query = ($parameters->queryString());
+        (object) $query = $parameters->queryString();
 
         (string) $float = '%f';
         (string) $integer = '%d';

@@ -1,8 +1,8 @@
 <?php
 
-namespace CouponURLs\Original\Deployment\Scripts;
+namespace CouponURLS\Original\Deployment\Scripts;
 
-use CouponURLs\Original\Deployment\Script;
+use CouponURLS\Original\Deployment\Script;
 use Error;
 use PhpParser\Node;
 use PhpParser\NodeTraverser;
@@ -13,8 +13,8 @@ use PhpParser\Node\Expr\MethodCall;
 use PhpParser\ParserFactory;
 use PhpParser\PrettyPrinter\Standard;
 
-use function CouponURLs\Original\Utilities\Collection\{_, a};
-use function CouponURLs\Original\Utilities\Text\i;
+use function CouponURLS\Original\Utilities\Collection\{_, a};
+use function CouponURLS\Original\Utilities\Text\i;
 
 Class NamedArgumentCollectionCallsToAssociativeArrayCallsCompilerScript extends Script
 {
@@ -23,8 +23,8 @@ Class NamedArgumentCollectionCallsToAssociativeArrayCallsCompilerScript extends 
         'perform',
         'allPass',
         'getThoseThat',
+        'findTheOneThat',
         'getMethodNameAndValueFromVariableParameters',
-        'findTheOneThat'
     ];
 
     static protected array $filesToExclude = [
@@ -45,7 +45,7 @@ Class NamedArgumentCollectionCallsToAssociativeArrayCallsCompilerScript extends 
     {
         if (
             !i($this->data->target)->endsWith('.php') ||
-            i($this->data->target)->matchesRegEx('/automated-emails[\w0-9]*\/vendor/') ||
+            i($this->data->target)->matchesRegEx('/coupon-urls[A-Za-z0-9_-]*\/vendor/') ||
             _(static::$filesToExclude)->have(
                 fn(string $fileEndingIn) => i($this->data->target)->endsWith($fileEndingIn)
             )
@@ -62,11 +62,11 @@ Class NamedArgumentCollectionCallsToAssociativeArrayCallsCompilerScript extends 
                     (new RandomObjectwithTheSameMethoName)->getThoseThat(
                         areValid: 'yes'
                     ),
-                    (new CouponURLs\Original\Collections\Collection([]))->getThoseThat(
+                    (new CouponURLS\Original\Collections\Collection([]))->getThoseThat(
                         areValid: 'yes'
                     ),
                     //also case insensitive
-                    (new CouponURLs\Original\Collections\Collection([]))->getthosethat(
+                    (new CouponURLS\Original\Collections\Collection([]))->getthosethat(
                         areValid: 'yes'
                     )
                 ];
@@ -89,7 +89,7 @@ Class NamedArgumentCollectionCallsToAssociativeArrayCallsCompilerScript extends 
                         && 
                         i($node?->name->toString())->toLowerCase()->isEither(_(NamedArgumentCollectionCallsToAssociativeArrayCallsCompilerScript::METHOD_NAMES)->map(fn($methodname) => strtolower($methodname))->asArray()) 
                         &&
-                        ($node->args[0] ?? false)
+                        isset($node->args[0])
                         && 
                         !empty($node->args[0]->name?->name)
                     ) {

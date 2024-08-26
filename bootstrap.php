@@ -13,6 +13,8 @@ require 'original/environment/env.php';
 
 Env::set(__FILE__);
 
+Env::settings()->environment !== 'production' && require 'original/utilities/text/translation.php';
+
 require Env::directory().'original/autoloading/autoloader.php';
 require Env::directory().'vendor/autoload.php';
 

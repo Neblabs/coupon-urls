@@ -32,8 +32,8 @@ class ActionComponentsDependency implements Cached, StaticType, Dependency
     {
         return new Components(_(
             new AddCouponComponent,
-            new AddProductComponent,
             new CouponToBeAddedNotificationMessageComponent,
+            new AddProductComponent,
             new CouponAddedToCartExtraNotificationMessageComponent,
             new RedirectionComponent
         ));

@@ -1,8 +1,8 @@
 <?php
 
-namespace CouponURLs\Original\Deployment\Scripts;
+namespace CouponURLS\Original\Deployment\Scripts;
 
-use CouponURLs\Original\Deployment\Script;
+use CouponURLS\Original\Deployment\Script;
 use Error;
 use PhpParser\Node;
 use PhpParser\NodeTraverser;
@@ -14,8 +14,8 @@ use PhpParser\Node\Expr\FuncCall;
 use PhpParser\Node\Name;
 use PhpParser\ParserFactory;
 use PhpParser\PrettyPrinter\Standard;
-use function CouponURLs\Original\Utilities\Collection\{_, a};
-use function CouponURLs\Original\Utilities\Text\i;
+use function CouponURLS\Original\Utilities\Collection\{_, a};
+use function CouponURLS\Original\Utilities\Text\i;
 
 Class _ToNewCollectionCompilerScript extends Script
 {
@@ -37,7 +37,7 @@ Class _ToNewCollectionCompilerScript extends Script
     {
         if (
             !i($this->data->target)->endsWith('.php') ||
-            i($this->data->target)->matchesRegEx('/automated-emails[\w0-9]*\/vendor/') ||
+            i($this->data->target)->matchesRegEx('/coupon-urls[A-Za-z0-9_-]*\/vendor/') ||
             _(static::$filesToExclude)->have(
                 fn(string $fileEndingIn) => i($this->data->target)->endsWith($fileEndingIn)
             )

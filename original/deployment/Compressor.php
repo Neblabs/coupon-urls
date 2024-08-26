@@ -1,8 +1,8 @@
 <?php
 
-namespace CouponURLs\Original\Deployment;
+namespace CouponURLS\Original\Deployment;
 
-use CouponURLs\Original\Characters\StringManager;
+use CouponURLS\Original\Characters\StringManager;
 use Symfony\Component\Finder\Finder;
 use ZipArchive;
 

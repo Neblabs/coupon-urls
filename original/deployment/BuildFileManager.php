@@ -1,17 +1,20 @@
 <?php
 
-namespace CouponURLs\Original\Deployment;
+namespace CouponURLS\Original\Deployment;
 
 use AllowDynamicProperties;
-use CouponURLs\Original\Collections\Collection;
-use CouponURLs\Original\Deployment\SettingsReader;
+use CouponURLS\Original\Collections\Collection;
+use CouponURLS\Original\Deployment\SettingsReader;
+use CouponURLS\Original\Validation\Validator;
+use CouponURLS\Original\Validation\Validators;
 use Exception;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 use Throwable;
-use function CouponURLs\Original\Utilities\Collection\{a, _, o};
+use function CouponURLS\Original\Utilities\Collection\{a, _, o};
+use function CouponURLS\Original\Utilities\Text\i;
 
 #[AllowDynamicProperties]
 Class BuildFileManager
@@ -102,7 +105,6 @@ Class BuildFileManager
                 continue;
             }
             //print "\e[H\e[J". "Cloning {$fileToCopy->getRealPath()}...";
-
             $this->fileSystem->copy(
                 $source = $fileToCopy->getRealPath(), 
                 $target = "{$copyDirectoryName}/{$fileToCopy->getRelativePathname()}"
@@ -118,8 +120,17 @@ Class BuildFileManager
                     $this->settingsReader->settings->scripts->afterCloningSingleFile,
                     data: a(target: $target)
                 );
+
+                if (($this->getProcessableFilesValidator($target)->isValid())) {
+                    Script::handle(
+                        $this->settingsReader->settings->scripts->afterCloningSingleProcessableFile,
+                        data: a(target: $target)
+                    );
+                }
             } catch(Throwable $exception) {
-                throw new Exception("Error in script, with source file: {$source} and message: {$exception->getmessage()}");
+                print "Error in script: \n";
+                throw $exception;
+                //throw new Exception("Error in script: {$exception->getMessage()}, with source file: {$source} and message: {$exception->getmessage()}");
             }
 
             $progressBar->advance();
@@ -142,6 +153,13 @@ Class BuildFileManager
         ]);
     }
 
+    protected function getProcessableFilesValidator(string $targetFilePath) : Validator
+    {
+        return new Validators(
+            ($this->settingsReader->settings->processableFiles)(i($targetFilePath))
+        );
+    }
+    
     public function compressCopy($copyDirectoryName)
     {
         (object) $compressor = new Compressor(

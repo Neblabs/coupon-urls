@@ -2,10 +2,7 @@
 
 namespace CouponURLs\App\Subscribers;
 
-use CouponURLs\App\Creation\Coupons\CouponFactory;
 use CouponURLs\App\Dashboard\DashboardData;
-use CouponURLs\App\Domain\Coupons\Coupon;
-use CouponURLs\App\Domain\Posts\Post;
 use CouponURLs\App\Presentation\Components\Dashboarddevelopmentscripts\DashboardDevelopmentScripts;
 use CouponURLs\Original\Collections\Collection;
 use CouponURLs\Original\Environment\Env;
@@ -109,7 +106,7 @@ Class DashboardScriptsRegistrator implements Subscriber
             Env::getwithPrefix('dashboard-font'), 
             'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600&display=swap',
             null,
-            null
+            '1.2.0'
         );
     }
 
@@ -119,7 +116,7 @@ Class DashboardScriptsRegistrator implements Subscriber
             Env::getwithPrefix('global'), 
             Env::directoryURI().'app/styles/dashboard-global.css',
             null,
-            null
+            '1.2.0'
         );
     }
 

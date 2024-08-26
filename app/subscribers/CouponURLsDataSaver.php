@@ -63,7 +63,7 @@ Class CouponURLsDataSaver implements Subscriber
         update_post_meta(
             post_id: $post->ID,
             meta_key: Env::getWithPrefix('options'),
-            meta_value: json_encode($state->options)
+            meta_value: wp_json_encode($state->options)
         );
 
         // dont save it since the user may not have entered any data!

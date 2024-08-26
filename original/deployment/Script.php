@@ -1,8 +1,10 @@
 <?php
 
-namespace CouponURLs\Original\Deployment;
+namespace CouponURLS\Original\Deployment;
 
-use CouponURLs\Original\Collections\Collection;
+use CouponURLS\Original\Collections\Collection;
+use Error;
+use Exception;
 
 Abstract Class Script
 {
@@ -13,6 +15,7 @@ Abstract Class Script
     public static function handle(Collection $scripts, array $data = [])
     {
         foreach ($scripts->asArray() as $scriptClass) {
+            //dump('runin script', $scriptClass);
             (object) $script = new $scriptClass($data);
 
             $script->run();

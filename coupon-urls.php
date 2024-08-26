@@ -22,30 +22,23 @@ use CouponURLs\Original\Files\RequireFileReader;
 use function CouponURLs\Original\Utilities\Collection\_a;
 
 /*
-Plugin Name: Coupon URLs for WooCommerce - Extension
+Plugin Name: Coupon URLs for WooCommerce
 Plugin URI:  
 Description: Add a coupon and optionally a product when clicking a custom URL.
-Version:      1.1.4
+Version:      1.2.0
 Author:       Neblabs
 Author URI:   https://neblabs.com
-Text Domain:  coupon-urls-international
+Text Domain:  coupon-urls
 Domain Path:  /international
 Requires at least: 4.7
 Requires PHP: 7.2
+Requires Plugins: woocommerce
+License: GPLv2
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 */
 
 require_once 'bootstrap.php';
 
-add_action('plugins_loaded', function() {
-    if (!class_exists(\CouponsPlus\App\Coupon\Context::class)) {
-        add_action( 'admin_notices', function () {
-            (string) $message = __('Coupon URLs needs Coupons+ to work.', 'coupon-urls-international');
-         
-            print '<div class="notice notice-error"><p>'.esc_html($message).'</p></div>';
-        });
-        return;
-    }
-});
 (object) $environmentFactory = new EnvironmentFactory;
 (object) $environment = $environmentFactory->create(Env::settings()->environment);
 

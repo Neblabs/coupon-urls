@@ -11,7 +11,7 @@ return o(
         shortId: 'cpu',
         namespace: 'CouponURLs',
         pluginFileName: 'coupon-urls',
-        textDomain: 'coupon-urls-international',
+        textDomain: 'coupon-urls',
         translationFiles: o(
             production: 'international/coupon-urls-international.pot',
             main: 'international/main-source.pot',
@@ -25,6 +25,7 @@ return o(
         applicationDatabase: ApplicationDatabase::class
     ),
     directories: o(
+        main: 'coupon-urls',
         app: o(
             schema: 'data/schema',
             scripts: 'scripts',

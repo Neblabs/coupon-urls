@@ -1,7 +1,8 @@
 <?php
 
-namespace CouponURLs\Original\Deployment;
+namespace CouponURLS\Original\Deployment;
 
+use CouponURLS\Original\Deployment\SettingsReader;
 use Symfony\Component\Console\Output\OutputInterface;
 
 Class Builder

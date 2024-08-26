@@ -14,20 +14,17 @@ use CouponURLs\App\Domain\Uris\Abilities\URI;
 use CouponURLs\Original\Abilities\Cached;
 use CouponURLs\Original\Data\Drivers\SQL\WordPressDatabaseReadableDriver;
 use CouponURLs\Original\Data\Query\GenericSQLParameters;
-use CouponURLs\Original\Data\Query\SQLParameters;
 use CouponURLs\Original\Dependency\Abilities\StaticType;
 use CouponURLs\Original\Dependency\Dependency;
 use CouponURLs\Original\Dependency\WillAlwaysMatch;
-use NilPortugues\Sql\QueryBuilder\Builder\MySqlBuilder;
 use WC_Discounts;
-use wpdb;
 
 class CouponURLsFinderDependency implements Cached, StaticType, Dependency
 {
     use WillAlwaysMatch;
 
     public function __construct(
-        protected wpdb $wpdb,
+        protected WordPressDatabaseReadableDriver $readableDriver,
         protected WC_Discounts $discounts,
         protected ActionsFactory $actionsFactory,
         protected CouponOptionsFromCouponFactory $optionsFactory,
@@ -42,7 +39,7 @@ class CouponURLsFinderDependency implements Cached, StaticType, Dependency
     public function create(): CouponURLsFinder
     {
         return new CouponURLsFinder(
-            readableDriver: new WordPressDatabaseReadableDriver($this->wpdb),
+            readableDriver: $this->readableDriver,
             parameters: new GenericSQLParameters(new PostMetaStructure),
             entityFactory: new QueryParametersFromStringMatchingCurrentRequestFactory(
                 new QueryParametersFromStringFactory,

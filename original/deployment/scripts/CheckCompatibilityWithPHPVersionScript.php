@@ -1,13 +1,13 @@
 <?php
 
-namespace CouponURLs\Original\Deployment\Scripts;
+namespace CouponURLS\Original\Deployment\Scripts;
 
-use CouponURLs\Original\Deployment\Script;
-use CouponURLs\Original\Environment\Env;
+use CouponURLS\Original\Deployment\Script;
+use CouponURLS\Original\Environment\Env;
 use ParseError;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Finder\Finder;
-use function CouponURLs\Original\Utilities\Text\i;
+use function CouponURLS\Original\Utilities\Text\i;
 
 Class CheckCompatibilityWithPHPVersionScript extends Script
 {
