@@ -25,9 +25,9 @@ use function CouponURLs\Original\Utilities\Collection\_a;
 Plugin Name: Coupon URLs for WooCommerce
 Plugin URI:  
 Description: Add a coupon and optionally a product when clicking a custom URL.
-Version:      1.2.0
+Version:      1.2.1
 Author:       Neblabs
-Text Domain:  coupon-urls
+Text Domain:  coupon-urls-for-woocommerce
 Domain Path:  /international
 Requires at least: 4.7
 Requires PHP: 7.2
