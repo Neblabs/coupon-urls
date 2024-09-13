@@ -2,7 +2,7 @@
 
 namespace CouponURLs\App\Subscribers;
 
-use CouponURLs\App\Components\Abilities\Identifciable;
+use CouponURLs\App\Components\Abilities\Identifiable;
 use CouponURLs\App\Components\Components;
 use CouponURLs\Original\Collections\Collection;
 use CouponURLs\Original\Environment\Env;
