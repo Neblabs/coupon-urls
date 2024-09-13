@@ -13,7 +13,7 @@ return o(
         pluginFileName: 'coupon-urls',
         textDomain: 'coupon-urls-for-woocommerce',
         translationFiles: o(
-            production: 'international/coupon-urls-international.pot',
+            production: 'international/coupon-urls-for-woocommerce.pot',
             main: 'international/main-source.pot',
             scripts: 'international/scripts-source.pot'
         )
