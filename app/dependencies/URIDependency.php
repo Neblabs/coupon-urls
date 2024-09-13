@@ -35,8 +35,12 @@ class URIDependency implements Cached, StaticType, Dependency
             new PathURIFactory($queryParametersFactory)
         ));
 
+        (object) $globalRequest = Request::createFromGlobals();
         (object) $homePath = i(wp_parse_url(get_home_url(), PHP_URL_PATH))->ensureRight('/');
-        (object) $serverPath = i(($_SERVER['PATH_INFO'] ?? $_SERVER['REQUEST_URI']) ?? '/')->ensureRight('/');
+        (object) $serverPath = i(
+            ($globalRequest->getPathInfo() ?? $globalRequest->getRequestUri()) ?? '/'
+        )->ensureRight('/');
+        
         /**
          * Adjustments for when site is not installed in root (/)
          */
@@ -47,7 +51,7 @@ class URIDependency implements Cached, StaticType, Dependency
         return $uriForCurrentRequestFactory->createEntity(
             _(
                 wp_parse_url(
-                    Request::create($serverPath->get(), parameters: Request::createFromGlobals()->query->all())->getUri()
+                    Request::create($serverPath->get(), parameters: $globalRequest->query->all())->getUri()
                 )
             )
         );
