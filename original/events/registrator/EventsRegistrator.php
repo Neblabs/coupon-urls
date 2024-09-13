@@ -38,8 +38,9 @@ Class EventsRegistrator
     protected function callPluginLoadedEvent()
     {
         (string) $shortId = Env::shortId();
+        (string) $specialEventWithPrefix = "__{$shortId}.loaded__";
 
-        do_action("__{$shortId}.loaded__");
+        do_action($specialEventWithPrefix);
     }
 
     protected function registerHandlersFor(array $event)
