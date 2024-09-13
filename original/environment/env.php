@@ -157,7 +157,7 @@ Class Env
 
     public static function textDomain()
     {
-        return strtolower(static::id().'-international');
+        return strtolower(static::settings()->app->textDomain);
     }
 
     public static function database()

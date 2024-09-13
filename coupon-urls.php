@@ -27,7 +27,6 @@ Plugin URI:
 Description: Add a coupon and optionally a product when clicking a custom URL.
 Version:      1.2.0
 Author:       Neblabs
-Author URI:   https://neblabs.com
 Text Domain:  coupon-urls
 Domain Path:  /international
 Requires at least: 4.7

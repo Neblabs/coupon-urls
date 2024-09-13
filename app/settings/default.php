@@ -11,7 +11,7 @@ return o(
         shortId: 'cpu',
         namespace: 'CouponURLs',
         pluginFileName: 'coupon-urls',
-        textDomain: 'coupon-urls',
+        textDomain: 'coupon-urls-for-woocommerce',
         translationFiles: o(
             production: 'international/coupon-urls-international.pot',
             main: 'international/main-source.pot',
