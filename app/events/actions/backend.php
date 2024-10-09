@@ -12,4 +12,7 @@ return a(
     save_post: [
         'CouponURLs\\App\\Subscribers\\CouponURLsDataSaver',
     ],
+    admin_init: [
+        'CouponURLs\\App\\Subscribers\\PluginScreenActionButtonsRegistrator',
+    ],
 );
