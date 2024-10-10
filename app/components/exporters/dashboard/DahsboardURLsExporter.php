@@ -3,9 +3,6 @@
 namespace CouponURLs\App\Components\Exporters\Dashboard;
 
 use CouponURLs\App\Components\Abilities\DashboardExportable;
-use CouponURLs\Original\Characters\StringManager;
-use CouponURLs\Original\Collections\Collection;
-use CouponURLs\Original\Environment\Env;
 
 use function CouponURLs\Original\Utilities\Collection\_;
 use function CouponURLs\Original\Utilities\Collection\a;

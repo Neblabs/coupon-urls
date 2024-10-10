@@ -3,7 +3,7 @@ Contributors: neblabs
 Tags: woocommerce, coupons, woocommerce coupons, url coupons
 Requires at least: 4.7
 Tested up to: 6.6
-Stable tag: 1.2.1
+Stable tag: 1.3.1.1
 Requires PHP: 7.2
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -56,3 +56,17 @@ Coupon URLs has been designed as a builder so that you can add only the actions 
     * Redirect
 
 Coupon URLs is an original Neblabs design. We love your opinion. If you have feedback or new ideas that you'd like to see, [let us know](https://wordpress.org/support/plugin/coupon-urls-for-woocommerce/). You can view the repo [here](https://github.com/Neblabs/coupon-urls).
+
+== Frequently Asked Questions ==
+
+= How to use this plugin? =
+Coupon URLs add a new section to the classic coupons admin screen. Go to [WordPress Admin] > Marketing > Coupons and create or edit a coupon. You will find a "Configure URL" button bellow the coupon code field.
+
+== Changelog ==
+
+= 1.3.1 =
+* Added PHP filters to enable/disable specific features
+
+= 1.3 =
+* Added a save button
+* Added a "Go to Coupons" link under the plugin name in the installed plugins screen.

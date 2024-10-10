@@ -7,6 +7,7 @@ use CouponURLs\App\Components\Actions\Builtin\RedirectionComponent;
 use CouponURLs\App\Components\Components;
 use CouponURLs\App\Components\Exporters\Dashboard\ActionsDashboardExporter;
 use CouponURLs\App\Components\Exporters\Dashboard\Actions\ActionComponentsExporter;
+use CouponURLs\App\Components\Exporters\Dashboard\CouponURLsFeaturesExporter;
 use CouponURLs\App\Components\Exporters\Dashboard\DahsboardURLsExporter;
 use CouponURLs\App\Components\Exporters\Dashboard\DashboardComponentsExporter;
 use CouponURLs\App\Components\Exporters\Dashboard\NoncesExporter;
@@ -52,6 +53,7 @@ class DashboardDataDependency implements Cached, StaticType, Dependency
             )),
             new TextDomainExporter,
             new DahsboardURLsExporter,
+            new CouponURLsFeaturesExporter,
             new StateExporter(_(
                 new QueryParametersDashboardExporter($this->queryParametersFromStringFactory),
                 new URIDashboardExporter,
