@@ -12,7 +12,7 @@ Create coupons URLs from any URL on your site. Apply a coupon by visiting a cust
 
 == Description ==
 
-A 100% free plugin. Free forever. No "pro" version. Premium quality. Designed from scratch with <3.
+A 100% free plugin. Free forever. No "pro" version. Premium quality. Made for WooCommerce.
 
 Coupon URLs is a WooCommerce extension that allows you to apply a WooCommerce coupon by clicking a custom link on your site. You have full control over the URL. You can create any URL you want from your own domain, there are no limits or restrictions:
 
