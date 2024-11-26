@@ -3,7 +3,7 @@ Contributors: neblabs
 Tags: woocommerce, coupons, woocommerce coupons, url coupons
 Requires at least: 4.7
 Tested up to: 6.7
-Stable tag: 1.3.3
+Stable tag: 1.3.3.1
 Requires PHP: 7.2
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -66,6 +66,9 @@ Coupon URLs add a new section to the classic coupons admin screen. Go to [WordPr
 
 == Changelog ==
 
+= 1.3.3.1 =
+* Fixed cart dependency on certain sections.
+
 = 1.3.3 =
 * Fixed scrolling issue when the classic panel area is longer than the Coupon URLs dashboard.
 
@@ -81,3 +84,5 @@ Coupon URLs add a new section to the classic coupons admin screen. Go to [WordPr
 = 1.3 =
 * Added a save button
 * Added a "Go to Coupons" link under the plugin name in the installed plugins screen.
+
+Coupons + | WooCommerce Advanced Coupons, Discount Rules, BOGO Offers, Bulk Discounts, Shipping +

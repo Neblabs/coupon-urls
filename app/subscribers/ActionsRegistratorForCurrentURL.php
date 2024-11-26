@@ -6,17 +6,26 @@ use CouponURLs\App\Data\Finders\Couponurls\CouponURLsFinder;
 use CouponURLs\App\Domain\Actions\ActionsComposite;
 use CouponURLs\App\Domain\CouponURLs\CouponURL;
 use CouponURLs\App\Domain\Uris\Abilities\URI;
-use CouponURLs\Original\Events\Parts\DefaultPriority;
+use CouponURLs\Original\Events\OptionalRegisterableSubscriber;
 use CouponURLs\Original\Events\Subscriber;
 use CouponURLs\Original\Events\Wordpress\EventArguments;
 use CouponURLs\Original\Validation\Validator;
 use CouponURLs\Original\Validation\Validators;
 use CouponURLs\Original\Validation\Validators\ValidWhen;
+use WC_Cart;
 
 use function CouponURLs\Original\Utilities\Collection\_;
 
-Class ActionsRegistratorForCurrentURL implements Subscriber
+Class ActionsRegistratorForCurrentURL implements Subscriber, OptionalRegisterableSubscriber
 {
+    static public function canBeRegistered() : Validator
+    {
+        return new Validators([
+            new ValidWhen(defined('REST_REQUEST')? !REST_REQUEST : true),
+            new ValidWhen(wc()->cart instanceof WC_Cart),
+        ]);
+    }
+
     public function priority(): int
     {
         return 6;

@@ -24,7 +24,9 @@ class HooksFactory
                         new Request\Action(name: $hookName)
                     );
 
-                    $hook->addSubscribers($subscribersGroup->map(
+                    $hook->addSubscribers($subscribersGroup->filter(function(string $subscriberType) {
+                        return $this->subscriberFactory->canBeCreated($subscriberType);
+                    })->map(
                         fn(string $subscriberType) => $this->subscriberFactory->create(
                             $subscriberType
                         )

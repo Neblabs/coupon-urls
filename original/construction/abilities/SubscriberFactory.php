@@ -7,4 +7,5 @@ use CouponURLs\Original\Events\Subscriber;
 interface SubscriberFactory
 {
     public function create(string $ubscriberType) : Subscriber;
+    public function canBeCreated(string $ubscriberType) : bool;
 }

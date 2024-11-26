@@ -5,7 +5,6 @@ namespace CouponURLs\Original\Core;
 use CouponURLs\Original\Core\Abilities\HandleableServiceException;
 use CouponURLs\Original\Core\Abilities\Service;
 use CouponURLs\Original\Core\Abilities\ServicesContainer;
-
 use Throwable;
 
 class Application implements ServicesContainer
@@ -18,16 +17,20 @@ class Application implements ServicesContainer
     
     public function start() : void
     {
-        /**
-         * todo: maybe add a maximum call stack limit to prevent the server from hanging 
-         * on infinite circular references.
-         * 
-         * We have a while loop because we want to give services the chance 
-         * to register extra services on start.
-         */
-        
-        while ($this->queuedServices->haveAny()) {
-            $this->queuedServices->start($this);
+        try {
+            /**
+             * todo: maybe add a maximum call stack limit to prevent the server from hanging 
+             * on infinite circular references.
+             * 
+             * We have a while loop because we want to give services the chance 
+             * to register extra services on start.
+             */
+            
+            while ($this->queuedServices->haveAny()) {
+                $this->queuedServices->start($this);
+            }            
+        } catch (\Throwable $exception) {
+            // silent for now... 
         }
     }
 
