@@ -1,18 +1,20 @@
-=== Coupon URLs: Apply a Coupon from a Custom Link - for WooCommerce ===
+=== Coupon URLs - Apply a Coupon from a Custom Link - for WooCommerce ===
 Contributors: neblabs
 Tags: woocommerce, coupons, woocommerce coupons, url coupons
 Requires at least: 4.7
-Tested up to: 6.6
-Stable tag: 1.3.1.1
+Tested up to: 6.7
+Stable tag: 1.3.3
 Requires PHP: 7.2
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Create coupons URLs from any URL on your site. Apply a coupon by visiting a custom link on your site, like example.com/code/9785895
+Create coupons URLs from any URL on your site. Apply a coupon by visiting a custom link from your domain, like example.com/code/9785895
 
 == Description ==
 
 A 100% free plugin. Free forever. No "pro" version. Premium quality. Made for WooCommerce.
+
+Compatible with WooCommerce 9.4.* (latest)
 
 Coupon URLs is a WooCommerce extension that allows you to apply a WooCommerce coupon by clicking a custom link on your site. You have full control over the URL. You can create any URL you want from your own domain, there are no limits or restrictions:
 
@@ -63,6 +65,15 @@ Coupon URLs is an original Neblabs design. We love your opinion. If you have fee
 Coupon URLs add a new section to the classic coupons admin screen. Go to [WordPress Admin] > Marketing > Coupons and create or edit a coupon. You will find a "Configure URL" button bellow the coupon code field.
 
 == Changelog ==
+
+= 1.3.3 =
+* Fixed scrolling issue when the classic panel area is longer than the Coupon URLs dashboard.
+
+= 1.3.2.1 =
+* Fixed PHP 8 deprecations.
+
+= 1.3.2 =
+* Fixed bug that didn't ignore trashed coupons (they're now ignored)
 
 = 1.3.1 =
 * Added PHP filters to enable/disable specific features

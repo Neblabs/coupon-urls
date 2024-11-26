@@ -9,6 +9,7 @@ use CouponURLs\Original\Collections\Mapper\Types;
 use Collator;
 use JsonSerializable;
 use PHPUnit\TestRunner\TestResult\Collector;
+use ReturnTypeWillChange;
 use stdClass;
 use Stringy\Stringy;
 
@@ -163,6 +164,7 @@ Class StringManager extends Stringy implements JsonSerializable
         };
     }
 
+    #[ReturnTypeWillChange]
     public function jsonSerialize() : mixed
     {
         return $this->str;   

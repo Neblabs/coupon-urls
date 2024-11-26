@@ -2,8 +2,10 @@
 
 namespace CouponURLs\Original\Cache;
 
+use AllowDynamicProperties;
 use CouponURLs\Original\Collections\Collection;
 
+#[AllowDynamicProperties]
 Abstract Class Cache
 {
     protected $data;

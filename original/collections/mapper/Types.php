@@ -2,6 +2,7 @@
 
 namespace CouponURLs\Original\Collections\Mapper;
 
+use AllowDynamicProperties;
 use CouponURLs\Original\Characters\StringManager;
 use CouponURLs\Original\Collections\ArrayGetter;
 use CouponURLs\Original\Collections\Collection;
@@ -12,7 +13,9 @@ use CouponURLs\Original\Collections\Mapper\Types\FloatType;
 use CouponURLs\Original\Collections\Mapper\Types\IntegerType;
 use CouponURLs\Original\Collections\Mapper\Types\StringType;
 use JsonSerializable;
+use ReturnTypeWillChange;
 
+#[AllowDynamicProperties]
 Abstract Class Types implements JsonSerializable
 {
     const STRING = 100000;
@@ -204,6 +207,7 @@ Abstract Class Types implements JsonSerializable
         return (is_string($value) || is_numeric($value) || is_bool($value));   
     }
 
+    #[ReturnTypeWillChange]
     public function jsonSerialize() : mixed
     {
         return [

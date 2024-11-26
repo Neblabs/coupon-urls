@@ -2,12 +2,14 @@
 
 namespace CouponURLs\Original\Validation;
 
+use AllowDynamicProperties;
 use CouponURLs\Original\Validation\Exceptions\ValidationException;
 use CouponURLs\Original\Validation\PassingValidationResult;
 use CouponURLs\Original\Validation\Validator;
 use CouponURLs\Original\Validation\Validators\ValidType;
 use Exception;
 
+#[AllowDynamicProperties]
 Class Validators extends Validator
 {
     private $vaildators;
